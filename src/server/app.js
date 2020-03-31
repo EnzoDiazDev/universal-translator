@@ -10,12 +10,9 @@ import routes from "../routes/routes"
 
 const app = express()
 
-// --Configuration--
+/* --Configuration-- */
 app.disable('x-powered-by')    // don't broadcast server info
 app.set("port", process.env.PORT || 5000)
-//app.engine('html', mustache())
-//app.set('view engine', 'html')
-//app.set('views', __dirname + '/views')
 const NINETY_DAYS_IN_MILLISECONDS = 7776000000
 const SECURE_COOKIE = (process.env.SECURE_COOKIE || '').trim().toLowerCase() === 'true'
 if (SECURE_COOKIE) {
@@ -24,8 +21,7 @@ if (SECURE_COOKIE) {
   app.set('trust proxy', 1) // trust first proxy
 }
 
-// --Middlewares--
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+/* --Middlewares-- */
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
