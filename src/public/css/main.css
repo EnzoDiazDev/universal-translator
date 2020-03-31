@@ -26,17 +26,10 @@ body {
 }
 body, html {
     height: 100%;
-    font-size: 14px;
+    font-size: 15px;
 }
 
-/* nav */
-nav {
-    position: fixed;
-    z-index: 1001;
-    height: 56px;
-    line-height: 56px;
-}
-
+/* app */ 
 .app {
     height: 100vh;
     background-color: #373740 /*#8994ae*/
@@ -50,6 +43,7 @@ nav {
     background-color: rgba(0,0,0,0.25);
 }
 
+/* sections */
 #channels, #chat, #users {
     position: relative;
     top:0; bottom: 0;
@@ -57,6 +51,7 @@ nav {
     height: 100%;
 }
 
+/* sections nav */
 #channels .nav, #chat .nav, #users .nav{
     height: 60px;
     border-bottom: 1px solid rgba(0,0,0,0.15);
@@ -71,6 +66,7 @@ nav {
     border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 
+/* message container */
 .container-msg {
     position: relative;
     height: calc(100% - (calc() + 8px));
@@ -83,6 +79,7 @@ nav {
     padding: var(--pad) calc(var(--pad) * 2);
 }
 
+/* message style */
 .m {
     margin: var(--pad) 0;
 }
@@ -138,16 +135,15 @@ nav {
     margin: 0;
 }
 
+/* textarea */
 #textarea {
     position: absolute;
     min-height: var(--pad);
     left: 0; right: 0;
     bottom: 0;
-    /* background-color: rgba(0,77,64, 1); */
     box-shadow: 0 -2px 2px -2px rgba(0,0,0,0.25);
     border-radius: 1px 1px 0 0;
     border-top: 1px solid rgba(255,255,255,0.05);
-    /* background-color: rgba(0,0,0,0.25);  */
 }
 
 .ta-input {
@@ -156,7 +152,7 @@ nav {
     padding: var(--pad) !important;
 }
 
-#channels{
+/* #channels{
 
 }
 
@@ -166,11 +162,7 @@ nav {
 
 #users{
 
-}
-
-
-
-
+} */
 
 
 /*Tablet*/
@@ -184,6 +176,8 @@ nav {
 @media only screen and (max-width: 600px){
     /*helper*/.s0 { display: none; }
     /*fix*/.container.smll { width: 100%; }
-
+    :root {
+        --pad: 10px /*for padding style*/
+    }
 
 }
