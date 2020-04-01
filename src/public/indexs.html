@@ -42,21 +42,6 @@
     <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-    <!--NAVBAR-->
-    <!-- <nav class="blue lighten-2">
-        <div class="nav-wrapper" style="padding: 0 20px;">
-            <a href="/" class="brand-logo hide-on-small-only">Chat</a>
-            <a href="/" class="brand-logo show-on-small hide-on-med-and-up">Chat</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a data-translate="navbar.documentation" href="documentation.html">docs</a></li>
-            </ul>
-        </div>
-        <ul class="sidenav" id="mobile-demo">
-            <li><a data-translate="navbar.documentation" href="documentation.html">docs</a></li>
-        </ul>
-    </nav> -->
-
     <!--MAIN CONTAINER-->
     <div class="container-fluid app">
         <div class="row">
@@ -65,36 +50,40 @@
             <div style="height: 100vh;" class="col s0 m0 l2 sidebg">
                 <div id="channels">
                     <!--nav-->
-                    <div class="nav"></div>
+                    <div class="nav">
+
+                    </div>
 
                 </div>
             </div>
 
-            <!--CAHT-->
+            <!--CHAT-->
             <div style="height: 100vh;" class="col s12 m10 l8">
                 <div id="chat">
                     <!--nav-->
-                    <div class="nav"></div>
+                    <div class="nav">
 
-                    <!--messages-->
-                    <div class="container-msg">
-                        <ul id="messages">
-                            <li class="m">
-                                <div class="m-avatar"><i>W</i></div>
-                                <div class="m-container">
-                                    <div class="m-name"><span id="name">Winston</span><span class="dot noselect">·</span><span class="m-timestamp">BOT</span><span class="m-flag">🤖</span></div>
-                                    <div class="m-content"><p data-translate="winston.message">This is a test message.</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea quae explicabo earum a perferendis deleniti quibusdam saepe mollitia voluptatem expedita velit corrupti repudiandae maiores sint, repellendus esse? Sunt, similique dignissimos?</p></div>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
 
-                    <!--textarea-->
-                    <div class="row">
-                        <form class="col s12" id="textarea">
+                    <div class="togrid">
+                        <!--messages-->
+                        <div class="container-msg">
+                            <ul id="messages">
+                                <li class="m">
+                                    <div class="m-avatar"><i>W</i></div>
+                                    <div class="m-container">
+                                        <div class="m-name"><span id="name">Winston</span><span class="dot noselect">·</span><span class="m-timestamp">BOT</span><span class="m-flag">🤖</span></div>
+                                        <div class="m-content"><p data-translate="winston.message">This is a test message.</p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea quae explicabo earum a perferendis deleniti quibusdam saepe mollitia voluptatem expedita velit corrupti repudiandae maiores sint, repellendus esse? Sunt, similique dignissimos?</p></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--textarea-->
+                        <form class="textarea-form">
                             <div class="row">
                                 <div style="margin: 1rem 2rem 0rem 2rem !important" class="input-field">
-                                    <textarea type="submit" name="message" class="materialize-textarea validate valid ta-input"></textarea>
+                                    <textarea id="textarea" type="submit" name="message" class="materialize-textarea validate valid ta-input"></textarea>
                                 </div>
                             </div>
                         </form>
@@ -106,15 +95,17 @@
             <div style="height: 100vh;" class="col s0 m2 l2 sidebg">
                 <div id="users">
                     <!--nav-->
-                    <div class="nav"></div>
+                    <div class="nav">
+                        
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
 
-
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
