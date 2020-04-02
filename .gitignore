@@ -105,4 +105,3 @@ dist
 
 # - Project ignores -
 .DS_Store
-src/public/_index.html
