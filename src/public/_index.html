@@ -1,99 +1,7 @@
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-  <meta name="description" content="Mike Reinstein">
-  <meta name="author" content="Mike Reinstein">
-
-  <title>Universal Translator</title>
-
-  
-  <meta name="theme-color" content="#ffffff">
-
-  <style>
-    * {
-      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-      font-weight: 300;
-    }
-
-    body {
-      max-width: 800px;
-      background-color: #333;
-      color: white;
-    }
-    
-    #messages {
-      overflow-x: scroll;
-    }
-
-    .message {
-      padding-bottom: 9px;
-    }
-
-    #chat-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-rows: 1fr 80px;
-      padding: 10px;
-      box-sizing: border-box;
-      font-size: 14px;
-    }
-
-    textarea {
-      padding: 4px;
-      margin-top: 8px;
-      font-size: 12px;
-    }
-
-    select {
-      position: fixed;
-      right: 10px;
-      top: 10px;
-      z-index: 1;
-      font-size: 14px;
-    }
-
-    textarea, select {
-      background-color: #222;
-      color: white;
-      border: 1px solid #555;
-    }
-
-    @media only screen and (min-width: 860px) {
-      body {
-        margin: 1em auto;
-      }
-    }
-
-  </style>
-
-  <noscript>
-    <style>* { color: black; }</style>
-  </noscript>
-
-</head>
-<body>
-
-<select>
-  <option value="en">en</option>
-  <option value="es">es</option>
-  <option value="fr">fr</option>
-</select>
-
-<div id="chat-container">
-  <div id="messages"></div>
-  <textarea placeholder="Chat" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-</div>
-
 <script>
-  const textarea = document.querySelector('textarea')
+  //const textarea = document.querySelector('textarea')
 
   async function submit (text, srcLanguage, uname) {
     return fetch('/chat', {
@@ -155,21 +63,21 @@
 
     const messages = [ ]
 
-    textarea.onkeypress = function (ev) {
-      if (ev.key === 'Enter') {
-        const text = textarea.value.trim()
+    // textarea.onkeypress = function (ev) {
+    //   if (ev.key === 'Enter') {
+    //     const text = textarea.value.trim()
 
-        if (text.length > 256) {
-          alert('please be kind, send less text for now.')
-          return
-        }
+    //     if (text.length > 256) {
+    //       alert('please be kind, send less text for now.')
+    //       return
+    //     }
     
-        submit(text, lang, uname)
-        setTimeout(() => textarea.value = '')
-      }
-    }
+    /*     submit(text, lang, uname) */
+    //     setTimeout(() => textarea.value = '')
+    //   }
+    // }
 
-    const msgContainer = document.querySelector('#messages')
+    //const msgContainer = document.querySelector('#messages')
 
     const connection = new EventSource(`/poll`, { withCredentials: true })
     connection.addEventListener('chat', function (e) {
@@ -193,9 +101,4 @@
 
 
   main()
-
-  
 </script>
-
-</body>
-</html>
