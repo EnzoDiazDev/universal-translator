@@ -3,7 +3,6 @@ import compression  from 'compression'
 import cookieParser from 'cookie-parser'
 import express      from 'express'
 import helmet       from 'helmet'
-import serveStatic  from 'serve-static'
 import path         from "path"
 
 import routes from "../routes/routes"
@@ -27,7 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(compression())
 app.use(helmet())
-app.use(serveStatic(path.resolve("src/public")))
+app.set("views", path.resolve("src/public/views"))
+app.set("view engine", "ejs")
+app.use(express.static(path.resolve("src/public")))
 
 // all routes below this line are API calls and should never cache.
 app.use(function (req, res, next) {
