@@ -84,24 +84,24 @@ body, html {
 }
 
     /* message style */
-    .m {
+    .message {
         margin: var(--pad) 0;
     }
-    .m-avatar {
+    .message-avatar {
         position: relative;
         float: left;
         width: 50px;
         height: 50px;
-        background-color: red;
+        background-color: rgba(0,0,0,0.1);
         border-radius: 50%;
         text-align: center;
     }
-    .m-avatar img{
+    .message-avatar img{
         width: inherit;
         height: inherit;
         border-radius: inherit;
     }
-    .m-avatar i {
+    .message-avatar i {
         width: inherit;
         height: inherit;
         font-style: normal;
@@ -109,16 +109,16 @@ body, html {
         line-height: 50px;
     }
 
-    .m-container {
+    .message-container {
         margin-left: 75px;
     }
-    .m-name #name{
-        font-size: var(var(--pad) * 1.25);
+    .message-author {
+        font-size: 1.25rem;
         margin: 0;
         padding: 0;
     }
-    .m-timestamp {
-        font-size: calc(var(--pad) * 0.9);
+    .message-timestamp {
+        font-size: 0.9rem;
         
     }
     .dot{
@@ -126,12 +126,12 @@ body, html {
         color: rgba(255,255,255,0.25);
         
     }
-    .m-flag {
+    .message-flag {
         margin: 0 calc(var(--pad) * 0.75);
-        font-size: calc(var(--pad) * 0.9);
+        font-size: 0.9rem
     }
 
-    .m-content * {
+    .message-content * {
         padding: 0;
         margin: 0;
     }

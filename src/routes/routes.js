@@ -7,24 +7,39 @@ import {jwtSign, jwtVerify} from "../utils/jwt"
 
 const discord_oauth = new Discord_oauth2()
 
+/**
+ * @typedef discordUserData
+ * @property {string} username
+ * @property {string} lang
+ * @property {string} avatar
+ * @property {string} token
+ * @property {string} discriminator
+ * @property {string} id
+ */ 
+
 const router = Router()
 const messages = []
 
 router.post('/chat', async function (req, res) {
-	let { srcLanguage, text, uname } = req.body
+	/** @type {string} */
+	let content = req.body.content
 
-	text = text.trim()
-	uname = uname.trim()
-	srcLanguage = srcLanguage.trim()
+	/**@type {discordUserData} */
+	let user = req.body.user
 
-	if (text.length > 256 || text.length < 2)
+	if(!user) return res.status(400).json({e: "body.user must be provide"})
+	if(!content) return res.status(400).json({e: "body.content must be provide"})
+
+	/*TODO: Check user token */
+
+	content = content.trim()
+	user.lang = user.lang.trim()
+
+	if (content.length > 256 || content.length < 2)
 		return res.status(400).json({ e: 'too short' })
 
-	if (srcLanguage !== 'en' && srcLanguage !== 'fr' && srcLanguage !== 'es')
+	if (user.lang !== 'en' && user.lang !== 'fr' && user.lang !== 'es')
 		return res.status(400).json({ e: 'invalid src lang' })
-
-	if (uname.length > 24)
-		uname = uname.substring(0, 24)
 
 	const texts = {
 		en: '',
@@ -34,12 +49,12 @@ router.post('/chat', async function (req, res) {
 
 	const languageTargets = Object.keys(texts)
 
-	const toTranslate = Object.keys(texts).filter((lang) => lang !== srcLanguage)
+	const toTranslate = Object.keys(texts).filter((lang) => lang !== user.lang)
 	
 	let results
 
 	try {
-		results = await Promise.all(toTranslate.map((targetLang) => translate({ text, srcLang: srcLanguage, targetLang })))
+		results = await Promise.all(toTranslate.map((targetLang) => translate({ text: content, srcLang: user.lang, targetLang })))
 		//console.log('b')
 		//console.log('results:', results)
 	} catch (er) {
@@ -52,14 +67,26 @@ router.post('/chat', async function (req, res) {
 		texts[L] = r.translatedText
 	})
 
-	texts[srcLanguage] = text
-
+	texts[user.lang] = content
+	console.log({
+        original: content,
+        translated: texts
+    })
 	messages.push({
-		originalText: text,
-		detectedSourceLanguage: results[0].detectedSourceLanguage || srcLanguage,
-		texts,
-		t: Date.now(),
-		uname
+        content: {
+            original: content,
+            translated: texts
+        },
+		timestamp: Date.now(),
+		user: {
+			username: user.username,
+			lang: results[0].detectedSourceLanguage || user.lang,
+			id: user.id,
+			discriminator: user.discriminator,
+			avatar: user.avatar
+		}
+		
+		
 	})
 
 	res.status(200).send('OK')
