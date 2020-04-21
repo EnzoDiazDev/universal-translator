@@ -1,6 +1,11 @@
 # universal-translator
 
+# Proyecto abandonado. 
+
+Esto está incompleto. 
+
 # Lottie's project structure.
+
 ```
 project/
 ├── src/
@@ -52,3 +57,6 @@ Reusable functions, algorithms, and helpers are located in the `src/utils` folde
 
 *.env file is gitignored.<br>
 The environment variables are detailed below.
+
+
+
